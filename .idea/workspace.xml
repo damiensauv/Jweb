@@ -8,7 +8,6 @@
       <change type="DELETED" beforePath="$PROJECT_DIR$/ORM/file.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Entities/Cart.java" afterPath="$PROJECT_DIR$/Entities/Cart.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Entities/CartProduct.java" afterPath="$PROJECT_DIR$/Entities/CartProduct.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Entities/Image.java" afterPath="$PROJECT_DIR$/Entities/Image.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Entities/Product.java" afterPath="$PROJECT_DIR$/Entities/Product.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Entities/User.java" afterPath="$PROJECT_DIR$/Entities/User.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />

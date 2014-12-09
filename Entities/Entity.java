@@ -1,6 +1,6 @@
 public  class   MyEntity
 {
-    private boolean     _hasChanged;
+    protected boolean     _hasChanged;
 
     MyEntity()
     {
