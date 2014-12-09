@@ -5,10 +5,8 @@ import java.lang.Exception;
 import java.lang.String;
 import java.util.Date;
 
-public class    CartEntity
+public class    CartEntity extends MyEntity
 {
-    private boolean     _hasChanged;
-
     private int         _id;
     private int         _userId;
     private Date        _lastAddDate;
@@ -53,13 +51,6 @@ public class    CartEntity
         else if (_validationDate == null)
             throw new Exception("userId of the cart is invalid : " + _userId);
     }
-
-    public  boolean     hasChanged()
-    {
-        return (_hasChanged);
-    }
-
-
 
 
 

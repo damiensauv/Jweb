@@ -2,10 +2,8 @@ import com.sun.org.apache.xpath.internal.operations.Bool;
 
 import java.lang.String;
 
-public class    UserEntity
+public class    UserEntity extends MyEntity
 {
-    private boolean     _hasChanged;
-
     private int         _id;
     private String      _email;
     private String      _pseudo;
@@ -61,12 +59,6 @@ public class    UserEntity
 
 
 
-
-
-    public  boolean     hasChanged()
-    {
-        return (_hasChanged);
-    }
 
     public  int         get_id()
     {

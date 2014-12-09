@@ -5,10 +5,8 @@ import java.lang.Exception;
 import java.lang.String;
 import java.util.Date;
 
-public class    CartProductEntity
+public class    CartProductEntity extends MyEntity
 {
-    private boolean     _hasChanged;
-
     private int         _cartId;
     private int         _productId;
     private Date        _quantity;
@@ -41,12 +39,6 @@ public class    CartProductEntity
         else if (_quantity < 0)
             throw new Exception("Quantity of the product is invalid : must be > 0");
     }
-
-    public  boolean     hasChanged()
-    {
-        return (_hasChanged);
-    }
-
 
 
 
