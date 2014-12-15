@@ -14,7 +14,7 @@ public class   Cart extends MyEntity
 
 
 
-    Cart()
+    public Cart()
     {
         _id = -1;
         _userId = -1;
@@ -23,7 +23,7 @@ public class   Cart extends MyEntity
         _validationDate = null;
     }
 
-    Cart(int id, int userId, Date lastAddDate, int isValidated, Date validationDate)
+    public Cart(int id, int userId, Date lastAddDate, int isValidated, Date validationDate)
     {
         _id = id;
         _userId = userId;

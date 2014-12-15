@@ -11,14 +11,14 @@ public class    User extends MyEntity
     private int         _id;
     private String      _email;
     private String      _pseudo;
-    private UserRole         _role;
+    private UserRole    _role;
     private int         _newsletter;
     private String      _salt;
     private String      _hashedpassword;
 
 
 
-    User()
+    public User()
     {
         _id = -1;
         _email = "";
@@ -29,7 +29,7 @@ public class    User extends MyEntity
         _hashedpassword = "";
     }
 
-    User(int id, String email, String pseudo, UserRole role, int newsletter, String salt, String hashedpassword)
+    public User(int id, String email, String pseudo, UserRole role, int newsletter, String salt, String hashedpassword)
     {
         _id = id;
         _email = email;

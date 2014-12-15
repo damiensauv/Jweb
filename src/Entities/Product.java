@@ -15,7 +15,7 @@ public class    Product extends MyEntity
 
 
 
-    Product()
+    public Product()
     {
         _id = -1;
         _price = -1;
@@ -24,7 +24,7 @@ public class    Product extends MyEntity
         _stock = -1;
     }
 
-    Product(int id, int price, String description, String name, int qtt)
+    public Product(int id, int price, String description, String name, int qtt)
     {
         _id = id;
         _price = price;

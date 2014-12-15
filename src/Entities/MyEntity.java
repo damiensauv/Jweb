@@ -4,7 +4,7 @@ public  class   MyEntity
 {
     protected boolean     _hasChanged;
 
-    MyEntity()
+    public MyEntity()
     {
     }
 

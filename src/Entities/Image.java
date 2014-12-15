@@ -11,13 +11,13 @@ public class    Image extends MyEntity
 
 
 
-    Image()
+    public Image()
     {
         _id = -1;
         _url = null;
     }
 
-    Image(int id, String url)
+    public Image(int id, String url)
     {
         _id = id;
         _url = url;

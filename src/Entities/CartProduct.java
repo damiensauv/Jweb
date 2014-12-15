@@ -12,14 +12,14 @@ public class    CartProduct extends MyEntity
 
 
 
-    CartProduct()
+    public CartProduct()
     {
         _cartId = -1;
         _productId = -1;
         _quantity = -1;
     }
 
-    CartProduct(int cartId, int productId, int qtt)
+    public CartProduct(int cartId, int productId, int qtt)
     {
         _cartId = cartId;
         _productId = productId;
