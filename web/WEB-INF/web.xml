@@ -20,5 +20,28 @@
 
 
 
+    <servlet>
+        <servlet-name>Create User</servlet-name>
+        <servlet-class>Controller.CreateUser</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Create User</servlet-name>
+        <url-pattern>/register</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>Profile</servlet-name>
+        <servlet-class>Controller.Profile</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Profile</servlet-name>
+        <url-pattern>/profile</url-pattern>
+    </servlet-mapping>
+
+
+
 
 </web-app>
