@@ -14,7 +14,7 @@ public class CreateUser extends HttpServlet
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-        this.getServletContext().getRequestDispatcher( "/View/CreateUser.jsp" ).forward( request, response );
+        this.getServletContext().getRequestDispatcher( "/WEB-INF/View/CreateUser.jsp" ).forward( request, response );
     }
 
 
@@ -27,7 +27,6 @@ public class CreateUser extends HttpServlet
         String confirmation = request.getParameter("confirmation");
         String pseudo = request.getParameter("pseudo");
         String news = request.getParameter("news");
-
 
         try
         {
@@ -56,15 +55,18 @@ public class CreateUser extends HttpServlet
             error.put("pseudo", e.getMessage() );
         }
 
-
         request.setAttribute("error", error);
 
-        /*
-        *  Faire un truc genre une redirection vers une Page Succes ou reste sur la page si error
-        * */
+
+        if ( error.isEmpty() ) {
+            request.setAttribute("sucess", "ok");
+        } else {
+            request.setAttribute("sucess", "ko");
+        }
 
 
-      this.getServletContext().getRequestDispatcher("/View/CreateUser.jsp").forward( request, response );
+
+        this.getServletContext().getRequestDispatcher("/WEB-INF/View/CreateUser.jsp").forward( request, response );
     }
 
 
@@ -98,7 +100,7 @@ public class CreateUser extends HttpServlet
     {
         if (email != null && email.trim().length() != 0)
         {
-            if (email.matches("#^[a-z0-9._-]+@[a-z0-9._-]{2,}\\.[a-z]{2,4}$#") == false)
+            if (email.matches("^[_a-z0-9-]+(\\.[_a-z0-9-]+)*@[a-z0-9-]+(\\.[a-z0-9-]+)*(\\.[a-z]{2,4})$") == false)
             {
                 throw new Exception("Mets un truc valide Negro");
             }

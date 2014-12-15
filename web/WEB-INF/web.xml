@@ -8,13 +8,20 @@
 
 
 
-
+    <servlet>
+        <servlet-name>Home</servlet-name>
+        <servlet-class>Controller.Home</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Home</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
 
 
     <servlet>
         <servlet-name>Create User</servlet-name>
         <servlet-class>Controller.CreateUser</servlet-class>
-        <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
         <servlet-name>Create User</servlet-name>
@@ -25,7 +32,6 @@
     <servlet>
         <servlet-name>Profile</servlet-name>
         <servlet-class>Controller.Profile</servlet-class>
-        <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
         <servlet-name>Profile</servlet-name>

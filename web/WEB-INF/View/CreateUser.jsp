@@ -7,6 +7,7 @@
 --%>
 
 <%@ page pageEncoding="UTF-8" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,7 +24,7 @@
 
 
         <label for="email">Adresse email <span class="requis">*</span></label>
-        <input type="text" id="email" name="email" value="" size="20" maxlength="60" required/>
+        <input type="email" id="email" name="email" value="" size="20" maxlength="60" required/>
         <span class="erreur">${error['email']}</span>
         <br />
 
@@ -50,5 +51,12 @@
         <br />
     </fieldset>
 </form>
+
+<%-- JSTL --%>
+<x:if test="${20 != 2}">
+    <p>test</p>
+</x:if>
+
+
 </body>
 </html>
