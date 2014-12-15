@@ -25,7 +25,7 @@ public class    User extends MyEntity
         _pseudo = "";
         _role = UserRole.UNKNOW;
         _newsletter = -1;
-        _salt = "42";
+        _salt = "";
         _hashedpassword = "";
     }
 

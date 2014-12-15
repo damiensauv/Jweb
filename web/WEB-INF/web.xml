@@ -8,15 +8,6 @@
 
 
 
-    <servlet>
-        <servlet-name>home</servlet-name>
-        <servlet-class>Controller.Home</servlet-class>
-        <load-on-startup>1</load-on-startup>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>home</servlet-name>
-        <url-pattern>/</url-pattern>
-    </servlet-mapping>
 
 
 
