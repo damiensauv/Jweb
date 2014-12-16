@@ -25,7 +25,6 @@
         <p>Vous pouvez vous inscrire via ce formulaire.</p>
 
 
-
         <label for="email">Adresse email <span class="requis">*</span></label>
         <input type="email" id="email" name="email" value="" size="20" maxlength="60" required/>
         <span class="erreur">${error['email']}</span>
@@ -57,9 +56,16 @@
 
 <%-- JSTL --%>
 
+
+
 <c:if test="${sucess == 'ok'}">
-    Mettre le lien vers la page de login
+    <p>Felicitations votre compte est cree, vous pouvez vous connecter <a href="<c:url value="/login"/>">ici</a>  </p>
 </c:if>
+<c:if test="${sucess == 'ko'}">
+    <p>${error['a_def']}</p>
+</c:if>
+
+
 
 
 

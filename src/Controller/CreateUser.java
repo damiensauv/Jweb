@@ -55,18 +55,28 @@ public class CreateUser extends HttpServlet
             error.put("pseudo", e.getMessage() );
         }
 
-        request.setAttribute("error", error);
 
 
-        if ( error.isEmpty() ) {
+        if (error.isEmpty())
+        {
             request.setAttribute("sucess", "ok");
-        } else {
+
+            /**
+             * Creation de USer en base avec different check !!
+             *
+             * Set request --> success a KO si fail bd avec le bon msg, genre deja cree ...
+             */
+
+
+
+        }
+        else
+        {
             request.setAttribute("sucess", "ko");
+            error.put("a_def", "pb user<-->BD EN TEST");
         }
 
-        /**
-         * Creation de USer en base avec different check !!
-         */
+        request.setAttribute("error", error);
 
 
         this.getServletContext().getRequestDispatcher("/WEB-INF/View/CreateUser.jsp").forward( request, response );
