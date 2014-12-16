@@ -110,6 +110,15 @@ public  class  TomcatDB implements IDataBase
         return (user);
     }
 
+    public User                     get_user(String email, String password)
+    {
+        User        user = null;
+        /*
+        get by email & password
+         */
+        return (user);
+    }
+
     public List<SimplyfiedUser>     get_user_list()
     {
         List<SimplyfiedUser>        list = null;
