@@ -10,7 +10,6 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-
 <!DOCTYPE html>
 <html>
 
@@ -57,9 +56,11 @@
 </form>
 
 <%-- JSTL --%>
-<x:if test="${20 != 2}">
-    <p>test</p>
-</x:if>
+
+<c:if test="${sucess == 'ok'}">
+    Mettre le lien vers la page de login
+</c:if>
+
 
 
 </body>

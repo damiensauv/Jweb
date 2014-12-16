@@ -64,6 +64,9 @@ public class CreateUser extends HttpServlet
             request.setAttribute("sucess", "ko");
         }
 
+        /**
+         * Creation de USer en base avec different check !!
+         */
 
 
         this.getServletContext().getRequestDispatcher("/WEB-INF/View/CreateUser.jsp").forward( request, response );
