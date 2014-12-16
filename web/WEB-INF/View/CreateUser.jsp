@@ -19,6 +19,9 @@
 </head>
 
 <body>
+
+<c:import url="NavBar.jsp"/>
+
 <form method="post" action="register">
     <fieldset>
         <legend>Inscription</legend>

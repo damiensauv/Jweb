@@ -1,20 +1,17 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: damien
   Date: 16/12/14
-  Time: 16:18
+  Time: 19:28
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Admin</title>
-</head>
-<body>
 
-<c:import url="NavBar.jsp"/>
+<ul>
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Connexion</a></li>
+    <li><a href="#">Register</a></li>
+    <li><a href="#">Logout</a></li>
 
-Admin
-</body>
-</html>
+    <li>pseudo</li>
+</ul>

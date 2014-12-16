@@ -12,6 +12,9 @@
     <title>Product All</title>
 </head>
 <body>
+
+<c:import url="NavBar.jsp"/>
+
 <h1>Product All</h1>
 
 <p>FAIRE une boucle pour tout les produit</p>

@@ -12,6 +12,9 @@
     <title>Product</title>
 </head>
 <body>
+
+<c:import url="NavBar.jsp"/>
+
     <h1>Product</h1>
 
 

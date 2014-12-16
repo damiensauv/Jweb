@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: damien
@@ -11,6 +12,9 @@
     <title>Profile</title>
 </head>
 <body>
+
+<c:import url="NavBar.jsp"/>
+
     Profile
 </body>
 </html>
