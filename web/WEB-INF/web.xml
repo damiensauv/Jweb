@@ -28,6 +28,15 @@
         <url-pattern>/register</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>Connexion</servlet-name>
+        <servlet-class>Controller.Connexion</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Connexion</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+
 
     <servlet>
         <servlet-name>Profile</servlet-name>
