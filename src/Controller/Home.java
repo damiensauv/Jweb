@@ -12,8 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 public class Home extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String message = "Transmission de variables : OK !";
-        request.setAttribute( "test", message );
+
 
         this.getServletContext().getRequestDispatcher( "/WEB-INF/View/home.jsp" ).forward( request, response );
     }
