@@ -4,10 +4,6 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
-
-
-
-
     <servlet>
         <servlet-name>Home</servlet-name>
         <servlet-class>Controller.Home</servlet-class>
@@ -17,7 +13,6 @@
         <servlet-name>Home</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
-
 
     <servlet>
         <servlet-name>Create User</servlet-name>
@@ -37,7 +32,6 @@
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
 
-
     <servlet>
         <servlet-name>Profile</servlet-name>
         <servlet-class>Controller.Profile</servlet-class>
@@ -47,7 +41,40 @@
         <url-pattern>/profile</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>Admin</servlet-name>
+        <servlet-class>Controller.Admin</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Admin</servlet-name>
+        <url-pattern>/admin</url-pattern>
+    </servlet-mapping>
 
+    <servlet>
+        <servlet-name>Cart</servlet-name>
+        <servlet-class>Controller.Cart</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Cart</servlet-name>
+        <url-pattern>/cart</url-pattern>
+    </servlet-mapping>
 
+    <servlet>
+        <servlet-name>Product</servlet-name>
+        <servlet-class>Controller.Product</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Product</servlet-name>
+        <url-pattern>/product</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ProductAll</servlet-name>
+        <servlet-class>Controller.ProductAll</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ProductAll</servlet-name>
+        <url-pattern>/productAll</url-pattern>
+    </servlet-mapping>
 
 </web-app>

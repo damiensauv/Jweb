@@ -12,6 +12,6 @@ public class Connexion extends HttpServlet {
 
 
 
-        this.getServletContext().getRequestDispatcher( "/WEB-INF/View/connexion.jsp" ).forward( request, response );
+        this.getServletContext().getRequestDispatcher( "/WEB-INF/View/Connexion.jsp" ).forward( request, response );
     }
 }

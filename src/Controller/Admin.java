@@ -1,19 +1,19 @@
 package Controller;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
-public class Home extends HttpServlet {
+/**
+ * Created by damien on 16/12/14.
+ */
+public class Admin extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 
 
-        this.getServletContext().getRequestDispatcher( "/WEB-INF/View/Home.jsp" ).forward( request, response );
+        this.getServletContext().getRequestDispatcher( "/WEB-INF/View/Admin.jsp" ).forward( request, response );
     }
 }
