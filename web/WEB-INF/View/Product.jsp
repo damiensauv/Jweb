@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: damien
@@ -11,6 +12,28 @@
     <title>Product</title>
 </head>
 <body>
-    Product
+    <h1>Product</h1>
+
+
+    <fieldset>
+        <p>-----Name------</p>
+        <img src="http://www.francebleu.fr/sites/default/files/imagecache/462_ressource/2013/08/13/766274/images/4l-photo-web.jpg" height="100" width="100">
+        <p>prod 1</p>
+        <p>Description :  </p>
+        <p>Stock :  </p>
+        <p>Prix :  </p>
+
+
+
+        <select>
+            <c:forEach var="i" begin="1" end="10">
+                <option value="${i}">${i}</option>
+            </c:forEach>
+        </select>
+
+        <button>Valider</button>
+
+    </fieldset>
+
 </body>
 </html>
