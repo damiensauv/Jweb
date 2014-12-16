@@ -13,7 +13,6 @@ public class   Cart extends MyEntity
     private Date        _validationDate;
 
 
-
     public Cart()
     {
         _id = -1;
