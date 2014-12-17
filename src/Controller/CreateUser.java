@@ -9,6 +9,11 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import Entities.User;
+import Enum.*;
+import ORM.TomcatDB;
+
+
 public class CreateUser extends HttpServlet
 {
 
@@ -67,6 +72,14 @@ public class CreateUser extends HttpServlet
              * Set request --> success a KO si fail bd avec le bon msg, genre deja cree ...
              */
 
+            User user = new User(42, email, pseudo, UserRole.USER, true, "test salt", password);
+
+            TomcatDB db = new TomcatDB("jdbc:mysql://localhost:8088/JWeb", "damien", "azerty");
+
+            db.connectToDataBase();
+
+
+            db.add_user(user);
 
 
         }
