@@ -101,7 +101,7 @@ public  class  TomcatDB implements IDataBase
     {
         String          query = "INSERT INTO user (id, email, pseudo, role, newsletter, salt, hashedPassword) VALUES(";
 
-        query += obj.get_id() + ", " + obj.get_email() + ", " + obj.get_pseudo() + ", " + obj.get_role() + ", " + obj.get_newsletter() + ", " + obj.get_newsletter() + ", " + obj.get_hashedpassword();
+        query += obj.get_id() + ", " + obj.get_email() + ", " + obj.get_pseudo() + ", " + obj.get_role().toString() + ", " + obj.get_newsletter() + ", " + obj.get_salt() + ", " + obj.get_hashedpassword();
         query += ") ;";
         return (execute_INSERT_query(query));
     }
