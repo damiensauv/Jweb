@@ -12,7 +12,7 @@ public class    User extends MyEntity
     private String      _email;
     private String      _pseudo;
     private UserRole    _role;
-    private int         _newsletter;
+    private boolean     _newsletter;
     private String      _salt;
     private String      _hashedpassword;
 
@@ -24,12 +24,12 @@ public class    User extends MyEntity
         _email = "";
         _pseudo = "";
         _role = UserRole.UNKNOW;
-        _newsletter = -1;
+        _newsletter = false;
         _salt = "";
         _hashedpassword = "";
     }
 
-    public User(int id, String email, String pseudo, UserRole role, int newsletter, String salt, String hashedpassword)
+    public User(int id, String email, String pseudo, UserRole role, boolean newsletter, String salt, String hashedpassword)
     {
         _id = id;
         _email = email;
@@ -123,12 +123,12 @@ public class    User extends MyEntity
         _role = newRole;
     }
 
-    public  int         get_newsletter()
+    public  boolean         get_newsletter()
     {
         return (_newsletter);
     }
 
-    public  void        set_newsletter(int newNewsletterState)
+    public  void        set_newsletter(boolean newNewsletterState)
     {
         if (_newsletter != newNewsletterState)
         {
