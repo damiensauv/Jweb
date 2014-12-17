@@ -13,7 +13,7 @@ public  class  TomcatDB implements IDataBase
     private String          _username;
     private String          _password;
 
-    TomcatDB(String url, String username, String password)
+    public                   TomcatDB(String url, String username, String password)
     {
         _url = url;
         _username = username;
