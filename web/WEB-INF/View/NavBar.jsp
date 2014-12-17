@@ -12,6 +12,13 @@
     <li><a href="#">Connexion</a></li>
     <li><a href="#">Register</a></li>
     <li><a href="#">Logout</a></li>
+    <li><a href="#">Contact</a></li>
+
+
+    <li><a href="#">Admin - Gestion des Users</a></li>
+    <li><a href="#">Admin - Ajout produit</a></li>
+    <li><a href="#">gestion des stock</a></li>
+
 
     <li>pseudo</li>
 </ul>

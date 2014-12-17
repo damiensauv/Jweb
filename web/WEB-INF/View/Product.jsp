@@ -27,7 +27,7 @@
         <p>Prix :  </p>
 
 
-
+        <p>Quantite</p>
         <select>
             <c:forEach var="i" begin="1" end="10">
                 <option value="${i}">${i}</option>
