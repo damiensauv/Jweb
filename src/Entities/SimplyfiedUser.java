@@ -9,7 +9,7 @@ public class SimplyfiedUser
     private String      _email;
     private int         _id;
 
-    SimplyfiedUser(String name, String email, int id)
+    public SimplyfiedUser(String name, String email, int id)
     {
         _name = name;
         _email = email;

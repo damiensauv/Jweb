@@ -24,7 +24,7 @@ public class    Product extends MyEntity
         _stock = -1;
     }
 
-    public Product(int id, int price, String description, String name, int qtt)
+    public Product(int id, float price, String description, String name, int qtt)
     {
         _id = id;
         _price = price;
@@ -76,13 +76,13 @@ public class    Product extends MyEntity
         return (_price);
     }
 
-    public  void        set_price(int newId)
+    public  void        set_price(float price)
     {
-        if (_price != newId)
+        if (_price != price)
         {
             _hasChanged = true;
         }
-        _price = newId;
+        _price = price;
     }
 
     public  String      get_description()
