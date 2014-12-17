@@ -12,7 +12,7 @@ public  interface  IDataBase
     Connection
      */
 
-    boolean     connectToDataBase();
+    public boolean     connectToDataBase();
 
 
 
@@ -25,7 +25,7 @@ public  interface  IDataBase
      * Protos avec commentaire : par exemple ça
      * Fonction qui prend un User en parametre et le push en base de donnée
      */
-    boolean             add_user(User obj);
+    public boolean      add_user(User obj);
     public boolean      add_product(Product obj);
     public boolean      add_cart(Cart obj);
     public boolean      add_cart_product(CartProduct obj);
@@ -41,7 +41,7 @@ public  interface  IDataBase
     /**
      * Fonction qui prend un User en parametre et l'update en base de donnée
      */
-    boolean             update_user(User obj);
+    public boolean      update_user(User obj);
     public boolean      update_product(Product obj);
 
 
@@ -56,7 +56,7 @@ public  interface  IDataBase
     public boolean      delete_cart(Cart obj);
     public boolean      delete_comment(Product obj);
     public boolean      delete_comment(User obj);
-
+    public boolean      delete_cart_product(CartProduct obj);
 
 
 

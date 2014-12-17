@@ -139,6 +139,7 @@ public  class  TomcatDB implements IDataBase
     }
 
 
+
     /*
     Update
      */
@@ -163,14 +164,16 @@ public  class  TomcatDB implements IDataBase
     public boolean      delete_user(User obj)
     {
         String   query  = "DELETE FROM user WHERE id = " + obj.get_id() + " ;";
-        if (!execute_DELETE_query(query) || !delete_cart(new Cart(0, obj.get_id(), null, 0, null)))
+        if (!execute_DELETE_query(query) || !delete_comment(obj) ||!delete_cart(new Cart(0, obj.get_id(), null, 0, null)))
             return (false);
         return (true);
     }
     public boolean      delete_product(Product obj)
     {
         String   query  = "DELETE FROM product WHERE id = " + obj.get_id() + " ;";
-        return (execute_DELETE_query(query));
+        if (!execute_DELETE_query(query) || !delete_comment(obj))
+            return (false);
+        return (true);
     }
     public boolean      delete_cart(Cart obj)
     {
@@ -188,6 +191,13 @@ public  class  TomcatDB implements IDataBase
     public boolean      delete_comment(User obj)
     {
         String   query  = "DELETE FROM product WHERE userId = " + obj.get_id() + " ;";
+        return (execute_DELETE_query(query));
+    }
+    public boolean      delete_cart_product(CartProduct obj)
+    {
+        String   query  = "DELETE FROM cartProduct WHERE ";
+
+        query += "id = " + obj.get_cartId() + "productId = " + obj.get_productId() + " ;";
         return (execute_DELETE_query(query));
     }
 
@@ -275,7 +285,7 @@ public  class  TomcatDB implements IDataBase
     }
     public List<SimplyfiedUser>     get_user_list()
     {
-        List<SimplyfiedUser>        list = null;
+        List<SimplyfiedUser>        list = new ArrayList<SimplyfiedUser>();
         String      query = "SELECT email, id, pseudo FROM user ;";
         ResultSet   res;
 
@@ -294,20 +304,18 @@ public  class  TomcatDB implements IDataBase
         }
         return (null);
     }
-    /* TODO */
     public List<Cart>               get_users_carts(int user_id)
     {
-        List<Cart>                  list = new ArrayList<Cart>();
-        /* TODO
-        String      query = "SELECT * FROM cart ;";
+        List<Cart>  list = new ArrayList<Cart>();
+        String      query = "SELECT * FROM cart WHERE userId = " + user_id + " ;";
         ResultSet   res;
 
         try
         {
-            res = execute_query(query);
+            res = execute_SELECT_query(query);
             while (res.next())
             {
-                list.add(new Product(res.getInt("id"), res.getFloat("price"), res.getString("description"), res.getString("name"), res.getInt("quantity")));
+                list.add(new Cart(res.getInt("id"), res.getInt("userId"), res.getDate("lastAddedElement"), res.getInt("isValidated"), res.getDate("validationDate")));
             }
             return (list);
         }
@@ -315,14 +323,28 @@ public  class  TomcatDB implements IDataBase
         {
             e.printStackTrace();
         }
-        */
         return (null);
     }
-    /* TODO */
     public List<CartProduct>        get_cart_products(int cart_id)
     {
-        List<CartProduct>                  list = null;
-        return (list);
+        List<CartProduct>           list = new ArrayList<CartProduct>();
+        String                      query = "SELECT * FROM cart_product WHERE id = " + cart_id + " ;";
+        ResultSet                   res;
+
+        try
+        {
+            res = execute_SELECT_query(query);
+            while (res.next())
+            {
+                list.add(new CartProduct(res.getInt("id"), res.getInt("productId"), res.getInt("quantity")));
+            }
+            return (list);
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+        return (null);
     }
     public List<Product>            get_products()
     {
@@ -367,7 +389,7 @@ public  class  TomcatDB implements IDataBase
     }
     public Image                    get_image(int productid)
     {
-        String      query = "SELECT productId FROM image WHERE productId = " + productid + " ;";
+        String      query = "SELECT * FROM image WHERE productId = " + productid + " ;";
         ResultSet   res;
 
         try
