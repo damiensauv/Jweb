@@ -20,7 +20,7 @@ public class    User extends MyEntity
 
     public User()
     {
-        _id = -1;
+        _id = 0;
         _email = "";
         _pseudo = "";
         _role = UserRole.UNKNOW;
@@ -29,7 +29,18 @@ public class    User extends MyEntity
         _hashedpassword = "";
     }
 
-    public User(int id, String email, String pseudo, UserRole role, boolean newsletter, String salt, String hashedpassword)
+    public User(String email, String pseudo, UserRole role, boolean newsletter, String salt, String hashedpassword)
+    {
+        _id = 0;
+        _email = email;
+        _pseudo = pseudo;
+        _role = role;
+        _newsletter = newsletter;
+        _salt = salt;
+        _hashedpassword = hashedpassword;
+    }
+
+    public User(int id,String email, String pseudo, UserRole role, boolean newsletter, String salt, String hashedpassword)
     {
         _id = id;
         _email = email;
@@ -62,9 +73,6 @@ public class    User extends MyEntity
         */
          return true;
     }
-
-
-
 
 
     public  int         get_id()
@@ -109,7 +117,7 @@ public class    User extends MyEntity
         _pseudo = newPseudo;
     }
 
-    public  UserRole         get_role()
+    public  UserRole          get_role()
     {
         return (_role);
     }

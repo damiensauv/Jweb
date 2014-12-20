@@ -60,8 +60,6 @@ public class CreateUser extends HttpServlet
             error.put("pseudo", e.getMessage() );
         }
 
-
-
         if (error.isEmpty())
         {
             request.setAttribute("sucess", "ok");
@@ -72,12 +70,11 @@ public class CreateUser extends HttpServlet
              * Set request --> success a KO si fail bd avec le bon msg, genre deja cree ...
              */
 
-            User user = new User(42, email, pseudo, UserRole.USER, true, "test salt", password);
+            User user = new User(email, pseudo, UserRole.USER, true, "test salt", password);
 
-            TomcatDB db = new TomcatDB("jdbc:mysql://localhost:8088/JWeb", "damien", "azerty");
+            TomcatDB db = new TomcatDB("jdbc:mysql://localhost:3306/JWeb", "damien", "azerty");
 
             db.connectToDataBase();
-
 
             db.add_user(user);
 
