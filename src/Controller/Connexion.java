@@ -44,6 +44,7 @@ public class Connexion extends HttpServlet {
             /*
                 Check Si L'user existe & mdp ok
                 Si ok --> connexion
+                Mettre en place la session
              */
 
 
