@@ -1,9 +1,13 @@
 package Controller;
 
+import Entities.User;
+import ORM.TomcatDB;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -38,23 +42,41 @@ public class Connexion extends HttpServlet {
         /*
         Bien Faire avec tout les bon attribut
          */
+        HttpSession session = request.getSession();
+
         if (error.isEmpty()) {
             request.setAttribute("sucess", "ok");
 
-            /*
+
+             /*
                 Check Si L'user existe & mdp ok
                 Si ok --> connexion
                 Mettre en place la session
              */
+            TomcatDB em = new TomcatDB("jdbc:mysql://localhost:3306/JWeb", "damien", "azerty");
 
+                em.connectToDataBase();
 
+            User user = em.get_user(email, password);
+            if (user == null)
+            {
+                session.setAttribute("session_user", null);
+            }
+             else
+            {
+                session.setAttribute("session_user", user);
+            }
 
-            response.sendRedirect(response.encodeRedirectURL("/cart"));
+            /*
+                recuper la session Sur toute les pages histoire de garder les gens co partout
+             */
+
+            response.sendRedirect(response.encodeRedirectURL("/"));
 
         }
         else
         {
-
+            session.setAttribute("session_user", null);
             request.setAttribute("error", error);
 
             this.getServletContext().getRequestDispatcher("/WEB-INF/View/Connexion.jsp").forward(request, response);

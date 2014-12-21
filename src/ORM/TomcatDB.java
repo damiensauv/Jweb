@@ -53,11 +53,15 @@ public  class  TomcatDB implements IDataBase
 
         try
         {
-            Statement stmt = connection.createStatement() ;
-            res = stmt.executeQuery(query) ;
+
+            Statement stmt = connection.createStatement();
+
+            res = stmt.executeQuery(query);
+
         }
         catch (SQLException e)
         {
+            System.out.print(e.getMessage());
             throw (e);
         }
         return (res);
@@ -253,14 +257,18 @@ public  class  TomcatDB implements IDataBase
     }
     public User                     get_user(String email, String password)
     {
-        String      query = "SELECT * FROM User WHERE email = '" + email + " ' AND password = '" + password + "';";
+        String      query = "SELECT * FROM User WHERE email = '" + email + "' AND password = '" + password + "';";
         ResultSet   res;
+
 
         try
         {
-            res = execute_SELECT_query(query);
+             res = execute_SELECT_query(query);
+
             while (res.next()) {
-                if (res.getString("email") == email && res.getString("password") == password) {
+                if (res.getString("email").equals(email) && res.getString("password").equals(password))
+                {
+
                     return (new User(res.getInt("id"),
                             res.getString("email"),
                             res.getString("pseudo"),
