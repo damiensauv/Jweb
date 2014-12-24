@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Ven 19 Décembre 2014 à 15:36
+-- Généré le: Mer 24 Décembre 2014 à 13:28
 -- Version du serveur: 5.6.22
 -- Version de PHP: 5.5.9-1ubuntu4.5
 
@@ -108,19 +108,19 @@ CREATE TABLE IF NOT EXISTS `User` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(255) DEFAULT NULL,
   `pseudo` varchar(255) DEFAULT NULL,
-  `role` int(11) DEFAULT NULL,
+  `role` varchar(255) DEFAULT NULL,
   `newsletter` tinyint(1) DEFAULT NULL,
   `salt` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Contenu de la table `User`
 --
 
 INSERT INTO `User` (`id`, `email`, `pseudo`, `role`, `newsletter`, `salt`, `password`) VALUES
-(1, 'admin@admin.fr', 'admin', 2, 0, '42', 'admin');
+(3, 'admin@admin.fr', 'admin', 'ADMIN', 0, '42', 'admin');
 
 --
 -- Contraintes pour les tables exportées
