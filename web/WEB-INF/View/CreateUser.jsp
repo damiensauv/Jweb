@@ -65,7 +65,7 @@
     <p>Felicitations votre compte est cree, vous pouvez vous connecter <a href="<c:url value="/login"/>">ici</a>  </p>
 </c:if>
 <c:if test="${sucess == 'ko'}">
-    <p>${error['a_def']}</p>
+    <p>${error['gen']}</p>
 </c:if>
 
 

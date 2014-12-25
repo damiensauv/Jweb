@@ -27,6 +27,8 @@ public class Connexion extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
+        boolean done = false;
+
         try {
             validEmail(email);
         } catch (Exception e) {
@@ -47,40 +49,43 @@ public class Connexion extends HttpServlet {
         if (error.isEmpty()) {
             request.setAttribute("sucess", "ok");
 
-
              /*
                 Check Si L'user existe & mdp ok
                 Si ok --> connexion
                 Mettre en place la session
              */
             TomcatDB em = new TomcatDB("jdbc:mysql://localhost:3306/JWeb", "damien", "azerty");
-
-                em.connectToDataBase();
+            em.connectToDataBase();
 
             User user = em.get_user(email, password);
             if (user == null)
             {
+                error.put("user_co", "false");
+                request.setAttribute("session_user", null);
                 session.setAttribute("session_user", null);
             }
              else
             {
                 session.setAttribute("session_user", user);
+                request.setAttribute("session_user", user);
+                done = true;
             }
-
-            /*
-                recuper la session Sur toute les pages histoire de garder les gens co partout
-             */
-
-            response.sendRedirect(response.encodeRedirectURL("/"));
 
         }
         else
         {
             session.setAttribute("session_user", null);
             request.setAttribute("error", error);
-
-            this.getServletContext().getRequestDispatcher("/WEB-INF/View/Connexion.jsp").forward(request, response);
+            request.setAttribute("session_user", null);
         }
+
+        this.getServletContext().getRequestDispatcher("/WEB-INF/View/Connexion.jsp").forward(request, response);
+        /*
+        if (!done)
+
+        else
+            this.getServletContext().getRequestDispatcher("/WEB-INF/View/Home.jsp").forward(request, response);
+    */
     }
 
     private void validPassword(String password) throws Exception

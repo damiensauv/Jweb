@@ -13,8 +13,10 @@
 </head>
 <body>
 
-<c:import url="NavBar.jsp"/>
 
+
+
+<c:import url="NavBar.jsp"></c:import>
 
     <p>Home Screen Test!!!</p>
 </body>

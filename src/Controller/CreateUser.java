@@ -13,15 +13,12 @@ import Entities.User;
 import Enum.*;
 import ORM.TomcatDB;
 
-
 public class CreateUser extends HttpServlet
 {
-
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         this.getServletContext().getRequestDispatcher( "/WEB-INF/View/CreateUser.jsp" ).forward( request, response );
     }
-
 
     public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException
     {
@@ -32,6 +29,12 @@ public class CreateUser extends HttpServlet
         String confirmation = request.getParameter("confirmation");
         String pseudo = request.getParameter("pseudo");
         String news = request.getParameter("news");
+        boolean newsletter;
+
+        if (news == null)
+            newsletter = false;
+        else
+            newsletter = true;
 
         try
         {
@@ -41,7 +44,6 @@ public class CreateUser extends HttpServlet
         {
             error.put("password", e.getMessage());
         }
-
         try
         {
             validEmail(email);
@@ -50,7 +52,6 @@ public class CreateUser extends HttpServlet
         {
             error.put("email", e.getMessage());
         }
-
         try
         {
             validPseudo(pseudo);
@@ -64,30 +65,21 @@ public class CreateUser extends HttpServlet
         {
             request.setAttribute("sucess", "ok");
 
-            /**
-             * Creation de USer en base avec different check !!
-             *
-             * Set request --> success a KO si fail bd avec le bon msg, genre deja cree ...
-             */
-
-            User user = new User(email, pseudo, UserRole.USER, true, "test salt", password);
+            User user = new User(email, pseudo, UserRole.USER, newsletter, "test salt", password);
 
             TomcatDB db = new TomcatDB("jdbc:mysql://localhost:3306/JWeb", "damien", "azerty");
 
             db.connectToDataBase();
-
             db.add_user(user);
-
 
         }
         else
         {
             request.setAttribute("sucess", "ko");
-            error.put("a_def", "pb user<-->BD EN TEST");
+            error.put("gen", "une erreur a été detecte");
         }
 
         request.setAttribute("error", error);
-
 
         this.getServletContext().getRequestDispatcher("/WEB-INF/View/CreateUser.jsp").forward( request, response );
     }

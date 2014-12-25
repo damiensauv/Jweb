@@ -6,19 +6,29 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <ul>
-    <li><a href="#">Home</a></li>
-    <li><a href="#">Connexion</a></li>
-    <li><a href="#">Register</a></li>
-    <li><a href="#">Logout</a></li>
-    <li><a href="#">Contact</a></li>
+    <li><a href="<c:url value="/"/>">Home</a></li>
+    <li><a href="<c:url value="/login"/>">Connexion</a></li>
+    <li><a href="<c:url value="/register"/>">Register</a></li>
+
+    <!---
+    <li><a href="<c:url value="/logout"/>">Logout</a></li>
+    <li><a href="<c:url value="/contact"/>">Contact</a></li>
+-->
+
+    <li><a href="<c:url value="/"/>">Admin - Gestion des Users</a></li>
+    <li><a href="<c:url value="/"/>">Admin - Ajout produit</a></li>
+    <li><a href="<c:url value="/"/>">gestion des stock</a></li>
+
+    <c:if test="${!empty session_user}">
+        <p>${session_user.get_pseudo()}</p>
+    </c:if>
 
 
-    <li><a href="#">Admin - Gestion des Users</a></li>
-    <li><a href="#">Admin - Ajout produit</a></li>
-    <li><a href="#">gestion des stock</a></li>
 
+    <li>deconnexion</li>
 
-    <li>pseudo</li>
 </ul>
+
