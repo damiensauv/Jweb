@@ -13,8 +13,9 @@
     <li><a href="<c:url value="/login"/>">Connexion</a></li>
     <li><a href="<c:url value="/register"/>">Register</a></li>
 
-    <!---
+
     <li><a href="<c:url value="/logout"/>">Logout</a></li>
+    <!--
     <li><a href="<c:url value="/contact"/>">Contact</a></li>
 -->
 
@@ -26,9 +27,6 @@
         <p>${session_user.get_pseudo()}</p>
     </c:if>
 
-
-
-    <li>deconnexion</li>
 
 </ul>
 

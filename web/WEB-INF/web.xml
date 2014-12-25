@@ -77,4 +77,15 @@
         <url-pattern>/productAll</url-pattern>
     </servlet-mapping>
 
+
+    <servlet>
+        <servlet-name>Deconnexion</servlet-name>
+        <servlet-class>Controller.Deconnexion</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Deconnexion</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+
+
 </web-app>
