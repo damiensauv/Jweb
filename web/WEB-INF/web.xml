@@ -42,12 +42,12 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>Admin</servlet-name>
-        <servlet-class>Controller.Admin</servlet-class>
+        <servlet-name>AdminProduct</servlet-name>
+        <servlet-class>Controller.AdminProduct</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>Admin</servlet-name>
-        <url-pattern>/admin</url-pattern>
+        <servlet-name>AdminProduct</servlet-name>
+        <url-pattern>/adminProduct</url-pattern>
     </servlet-mapping>
 
     <servlet>

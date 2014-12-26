@@ -33,6 +33,15 @@ public class    Product extends MyEntity
         _stock = qtt;
     }
 
+    public Product(float price, String description, String name, int qtt)
+    {
+        _id = 0;
+        _price = price;
+        _description = description;
+        _name = name;
+        _stock = qtt;
+    }
+
 
 
 

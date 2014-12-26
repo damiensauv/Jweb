@@ -88,7 +88,7 @@ public class CreateUser extends HttpServlet
     private void validPseudo(String pseudo) throws Exception
     {
         if (pseudo == null || pseudo.trim().length() == 0)
-            throw new Exception("Met un pseudo Kleba");
+            throw new Exception("Met un pseudo");
     }
 
     private void validPassword(String password, String confirmation) throws Exception
@@ -106,7 +106,7 @@ public class CreateUser extends HttpServlet
         }
         else
         {
-            throw new Exception("Mets un mot et confirme le");
+            throw new Exception("mot de passe juste a mettre");
         }
 
     }
@@ -117,12 +117,12 @@ public class CreateUser extends HttpServlet
         {
             if (email.matches("^[_a-z0-9-]+(\\.[_a-z0-9-]+)*@[a-z0-9-]+(\\.[a-z0-9-]+)*(\\.[a-z]{2,4})$") == false)
             {
-                throw new Exception("Mets un truc valide Negro");
+                throw new Exception("email valide a mettre !");
             }
         }
         else
         {
-            throw new Exception("Mets une addresse gros Boulet");
+            throw new Exception("email valide a mettre");
         }
     }
 

@@ -12,15 +12,11 @@
     <li><a href="<c:url value="/"/>">Home</a></li>
     <li><a href="<c:url value="/login"/>">Connexion</a></li>
     <li><a href="<c:url value="/register"/>">Register</a></li>
-
-
     <li><a href="<c:url value="/logout"/>">Logout</a></li>
-    <!--
-    <li><a href="<c:url value="/contact"/>">Contact</a></li>
--->
+    <li><a href="<c:url value="/adminProduct"/>">Admin - Ajout produit</a></li>
+
 
     <li><a href="<c:url value="/"/>">Admin - Gestion des Users</a></li>
-    <li><a href="<c:url value="/"/>">Admin - Ajout produit</a></li>
     <li><a href="<c:url value="/"/>">gestion des stock</a></li>
 
     <c:if test="${!empty session_user}">
