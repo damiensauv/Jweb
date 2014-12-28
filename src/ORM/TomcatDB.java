@@ -18,6 +18,7 @@ public  class  TomcatDB implements IDataBase
         _url = url;
         _username = username;
         _password = password;
+        connection = null;
     }
 
     /*
@@ -53,19 +54,19 @@ public  class  TomcatDB implements IDataBase
 
         try
         {
-
             Statement stmt = connection.createStatement();
-
             res = stmt.executeQuery(query);
-
         }
         catch (SQLException e)
         {
+
             System.out.print(e.getMessage());
             throw (e);
         }
+
         return (res);
     }
+
     private boolean     execute_INSERT_query(String query)
     {
         try
@@ -351,7 +352,7 @@ public  class  TomcatDB implements IDataBase
     public List<Product>            get_products()
     {
         List<Product>                  list = new ArrayList<Product>();
-        String      query = "SELECT * FROM Product ;";
+        String      query = "SELECT * FROM Product;";
         ResultSet   res;
 
         try

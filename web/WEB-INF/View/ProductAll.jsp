@@ -20,6 +20,10 @@
 <p>FAIRE une boucle pour tout les produit</p>
 
 
+<!--
+    <c:out value="${productAll}">${productAll}</c:out>
+-->
+
     <fieldset>
         <p>-----Name------</p>
         <img src="http://www.francebleu.fr/sites/default/files/imagecache/462_ressource/2013/08/13/766274/images/4l-photo-web.jpg" height="100" width="100">
