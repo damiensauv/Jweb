@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Mer 24 Décembre 2014 à 13:28
+-- Généré le: Lun 05 Janvier 2015 à 02:14
 -- Version du serveur: 5.6.22
 -- Version de PHP: 5.5.9-1ubuntu4.5
 
@@ -63,13 +63,15 @@ CREATE TABLE IF NOT EXISTS `CartProduct` (
 --
 
 CREATE TABLE IF NOT EXISTS `Comment` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) DEFAULT NULL,
   `product_id` int(11) DEFAULT NULL,
   `comment` text,
   `stars` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`,`product_id`),
   KEY `product_id` (`product_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=24 ;
 
 -- --------------------------------------------------------
 
@@ -79,7 +81,8 @@ CREATE TABLE IF NOT EXISTS `Comment` (
 
 CREATE TABLE IF NOT EXISTS `Image` (
   `id_product` int(11) DEFAULT NULL,
-  `url` varchar(255) DEFAULT NULL,
+  `url` text,
+  UNIQUE KEY `id_product_2` (`id_product`),
   KEY `id_product` (`id_product`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -95,8 +98,9 @@ CREATE TABLE IF NOT EXISTS `Product` (
   `description` text,
   `name` varchar(255) DEFAULT NULL,
   `stock` int(11) DEFAULT NULL,
+  `average` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
 
 -- --------------------------------------------------------
 
@@ -113,7 +117,7 @@ CREATE TABLE IF NOT EXISTS `User` (
   `salt` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
 -- Contenu de la table `User`

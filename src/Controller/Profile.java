@@ -20,6 +20,7 @@ public class Profile extends HttpServlet
 
         if ((usr != null))
         {
+            request.setAttribute("user_co", usr);
             this.getServletContext().getRequestDispatcher("/WEB-INF/View/Profile.jsp").forward( request, response );
         }
         else

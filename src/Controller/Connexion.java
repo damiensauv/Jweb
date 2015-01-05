@@ -17,10 +17,6 @@ public class Connexion extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 
-        /*
-         * Faire requete pour le Top 3 des produit
-         */
-
 
         this.getServletContext().getRequestDispatcher("/WEB-INF/View/Connexion.jsp").forward(request, response);
     }

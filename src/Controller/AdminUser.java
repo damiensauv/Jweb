@@ -96,6 +96,5 @@ public class AdminUser extends HttpServlet {
         }
 
         this.doGet(request,response);
-//        this.getServletContext().getRequestDispatcher("/WEB-INF/View/AdminUser.jsp").forward(request, response);
     }
 }

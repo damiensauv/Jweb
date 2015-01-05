@@ -24,6 +24,14 @@ public class Product extends HttpServlet {
 
         String id = request.getParameter("id");
 
+
+        if (id.isEmpty())
+        {
+            request.setAttribute("simple_error", "id faux");
+            RequestDispatcher rd = request.getRequestDispatcher("/");
+            rd.forward(request, response);
+        }
+
         TomcatDB db = new TomcatDB("jdbc:mysql://localhost:3306/JWeb", "damien", "azerty");
         db.connectToDataBase();
 
@@ -31,37 +39,41 @@ public class Product extends HttpServlet {
         int somme;
         somme = 0;
 
+        a = 0;
+
         a = Integer.parseInt(id);
 
         Entities.Product p = db.get_product(a);
-        Entities.Image img = db.get_image(a);
-        List<Comment> listComment = db.get_comments(p.get_id());
-
-        request.setAttribute("product", p);
-        request.setAttribute("db", db);
-        request.setAttribute("image", img);
-        request.setAttribute("listComment", listComment);
-
-        HttpSession session = request.getSession();
-
-        session.setAttribute("product", p);
-        /*
-        *  Faire quand id n'existe pas !!
-        *
-        * */
-
-        Entities.User usr = (User) session.getAttribute("session_user");
-
-        if ((usr != null))
-        {
-            this.getServletContext().getRequestDispatcher( "/WEB-INF/View/Product.jsp" ).forward( request, response );
-        }
+        if (p == null)
+            {
+                request.setAttribute("simple_error", "id faux");
+                RequestDispatcher rd = request.getRequestDispatcher("/");
+                rd.forward(request, response);
+            }
         else
-        {
-            request.setAttribute("simple_error", "Vous devez etre connecte");
-            RequestDispatcher rd = request.getRequestDispatcher("/login");
-            rd.forward(request, response);
-        }
+            {
+                Entities.Image img = db.get_image(a);
+                List<Comment> listComment = db.get_comments(p.get_id());
+
+                request.setAttribute("product", p);
+                request.setAttribute("db", db);
+                request.setAttribute("image", img);
+                request.setAttribute("listComment", listComment);
+
+                HttpSession session = request.getSession();
+
+                session.setAttribute("product", p);
+
+                Entities.User usr = (User) session.getAttribute("session_user");
+
+                if ((usr != null)) {
+                    this.getServletContext().getRequestDispatcher("/WEB-INF/View/Product.jsp").forward(request, response);
+                } else {
+                    request.setAttribute("simple_error", "Vous devez etre connecte");
+                    RequestDispatcher rd = request.getRequestDispatcher("/login");
+                    rd.forward(request, response);
+                }
+            }
     }
 
     public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException
@@ -78,11 +90,7 @@ public class Product extends HttpServlet {
         Entities.User usr= (User) session.getAttribute("session_user");
 
 
-      /*
-        * difference entre les 2 form
-        *
-        * recup du mec co ds la session
-        * */
+
 
         if (coms != null)
         {

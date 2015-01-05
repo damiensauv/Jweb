@@ -13,7 +13,7 @@
     <c:if test="${!empty session_user}">
         <li><a href="<c:url value="/productAll"/>">Liste produit</a></li>
         <li><a href="<c:url value="/profile"/>">Profile</a></li>
-        <li><a href="<c:url value="/cart"/>">Panier</a></li>
+
         <li><a href="<c:url value="/logout"/>">Logout</a></li>
 
 

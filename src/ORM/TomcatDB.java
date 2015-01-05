@@ -434,8 +434,9 @@ public  class  TomcatDB implements IDataBase
         try
         {
             res = execute_SELECT_query(query);
-            res.next();
-            return (new Product(res.getInt("id"), res.getFloat("price"), res.getString("description"), res.getString("name"), res.getInt("stock"), res.getInt("average")));
+
+            if (res.next())
+                return (new Product(res.getInt("id"), res.getFloat("price"), res.getString("description"), res.getString("name"), res.getInt("stock"), res.getInt("average")));
         }
         catch (SQLException e)
         {

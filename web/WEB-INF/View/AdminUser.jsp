@@ -8,10 +8,11 @@
 <body>
 <c:import url="NavBar.jsp"/>
 
-<h1>Admin User</h1>
+<h2>Admin User</h2>
 
 <span class="erreur">${simple_error}</span>
 
+<fieldset>
 <form method="post" action="adminUser">
 
     <select name="user">
@@ -29,6 +30,7 @@
     <input type="submit" value="submit" />
 
 </form>
+</fieldset>
 
 
 </body>

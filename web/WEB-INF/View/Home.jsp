@@ -13,18 +13,13 @@
 </head>
 <body>
 
-<c:import url="NavBar.jsp"></c:import>
+    <c:import url="NavBar.jsp"></c:import>
 
-    <p>Home Screen !!!</p>
+    <h2>Home</h2>
 
+    <span class="error">${simple_error}</span>
 
-
-
-<p>Top 3 produit</p>
-<fieldset>
-    produit best 1
-</fieldset>
-
+    <p>Bienvenue sur le Site</p>
 
 </body>
 </html>

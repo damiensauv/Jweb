@@ -15,8 +15,9 @@
 
 <c:import url="NavBar.jsp"/>
 
+<h2>Admin Ajout Produit</h2>
 
-
+<fieldset>
 <form method="post" action="adminProductAdd ">
 
     <label for="img">Image - url<span class="requis">*</span></label>
@@ -25,10 +26,8 @@
     <label for="name">Name<span class="requis">*</span></label>
     <input type="name" id="name" name="name" value="" required/>
 
-
     <label for="description">Description</label>
-    <textarea name="description" id="description"></textarea>
-
+    <textarea name="description" id="description" required></textarea>
 
     <label for="stock">Stock<span class="requis">*</span></label>
     <input type="number" id="stock" name="stock" value="" required/>
@@ -40,8 +39,7 @@
     <input type="submit" value="submit" />
 
 </form>
-
-
+</fieldset>
 
 </body>
 </html>

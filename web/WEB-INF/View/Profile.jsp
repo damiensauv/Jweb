@@ -15,9 +15,11 @@
 
 <c:import url="NavBar.jsp"/>
 
-    Profile
+   <h2>Profile</h2>
 
-info du mec + histo des achats
+<p>Pseudo : ${user_co.get_pseudo()}</p>
+<p>Email : ${user_co.get_email ()}</p>
+
 
 </body>
 </html>
