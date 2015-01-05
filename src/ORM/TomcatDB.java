@@ -152,12 +152,12 @@ public  class  TomcatDB implements IDataBase
      */
     public boolean      update_user(User obj)
     {
-        String query = "UPDATE User SET email='" + obj.get_email() + "', pseudo='"+obj.get_pseudo()+"',role='"+obj.get_role()+"';";
+        String query = "UPDATE User SET role='"+obj.get_role()+"' WHERE email='"+ obj.get_email()+"';";
         return (execute_INSERT_query(query));
     }
     public boolean update_product(Product obj)
     {
-        String query = "UPDATE Product SET price="+obj.get_price() + ",description='"+obj.get_description()+"',name='"+obj.get_name()+"', stock="+obj.get_stock()+",average="+obj.get_average()+";";
+        String query = "UPDATE Product SET average="+obj.get_average()+" WHERE id = "+obj.get_id()+";";
         return (execute_INSERT_query(query));
     }
 

@@ -28,7 +28,7 @@
     <button>Valider</button>
 </fieldset>
 
-
+<p>Commentaire</p>
 <form method="post" action="product">
     <textarea id="coms" name="coms"></textarea>
 

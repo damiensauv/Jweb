@@ -90,8 +90,6 @@ public class Product extends HttpServlet {
         Entities.User usr= (User) session.getAttribute("session_user");
 
 
-
-
         if (coms != null)
         {
             int s;
@@ -118,5 +116,6 @@ public class Product extends HttpServlet {
             prod.set_average(somme / tmpcom.size());
             db.update_product(prod);
         }
+        this.getServletContext().getRequestDispatcher("/WEB-INF/View/Product.jsp").forward(request, response);
     }
 }
