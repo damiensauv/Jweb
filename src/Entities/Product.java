@@ -12,6 +12,7 @@ public class    Product extends MyEntity
     private String      _description;
     private String      _name;
     private int         _stock;
+    private int         _average;
 
 
 
@@ -22,24 +23,27 @@ public class    Product extends MyEntity
         _description = "";
         _name = "";
         _stock = -1;
+        _average = 0;
     }
 
-    public Product(int id, float price, String description, String name, int qtt)
+    public Product(int id, float price, String description, String name, int qtt, int avg)
     {
         _id = id;
         _price = price;
         _description = description;
         _name = name;
         _stock = qtt;
+        _average = avg;
     }
 
-    public Product(float price, String description, String name, int qtt)
+    public Product(float price, String description, String name, int qtt, int avg)
     {
         _id = 0;
         _price = price;
         _description = description;
         _name = name;
         _stock = qtt;
+        _average = avg;
     }
 
 
@@ -135,4 +139,16 @@ public class    Product extends MyEntity
         }
         _stock = qtt;
     }
+
+    public int get_average()
+    {
+        return _average;
+    }
+
+    public void set_average(int avg)
+    {
+        _average = avg;
+    }
+
 }
+

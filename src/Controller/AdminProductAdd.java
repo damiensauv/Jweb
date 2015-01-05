@@ -3,27 +3,35 @@ package Controller;
 import Entities.*;
 import Entities.Product;
 import ORM.TomcatDB;
+import Enum.UserRole;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by damien on 16/12/14.
- */
-public class AdminProduct extends HttpServlet {
+public class AdminProductAdd extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
+        HttpSession session = request.getSession();
+        Entities.User usr = (User) session.getAttribute("session_user");
 
-
-
-        this.getServletContext().getRequestDispatcher( "/WEB-INF/View/AdminProduct.jsp" ).forward( request, response );
+        if ((usr != null) && (usr.get_role() == UserRole.ADMIN))
+        {
+            this.getServletContext().getRequestDispatcher( "/WEB-INF/View/AdminProductAdd.jsp" ).forward( request, response );
+        }
+        else
+        {
+            request.setAttribute("simple_error", "Vous devez etre connecte en Admin");
+            RequestDispatcher rd = request.getRequestDispatcher("/login");
+            rd.forward(request, response);
+        }
     }
-
 
     public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException
     {
@@ -34,7 +42,6 @@ public class AdminProduct extends HttpServlet {
         String description = request.getParameter("description");
         String stock = request.getParameter("stock");
         String prix = request.getParameter("prix");
-
 
         try
         {
@@ -77,22 +84,26 @@ public class AdminProduct extends HttpServlet {
             error.put("prix", e.getMessage());
         }
 
-
         if (error.isEmpty())
         {
             request.setAttribute("sucess", "ok");
 
             TomcatDB db = new TomcatDB("jdbc:mysql://localhost:3306/JWeb", "damien", "azerty");
-
             db.connectToDataBase();
 
             Float p = Float.parseFloat(prix);
             int q = Integer.parseInt(stock);
 
-            Entities.Product product = new Product(p, description, name, q);
 
+            Entities.Product product = new Product(p, description, name, q, 0);
             db.add_product(product);
 
+            Entities.Product prod = db.get_product_by_name(name);
+
+            int id = prod.get_id();
+
+            Entities.Image image = new Image(id, img);
+            db.add_image(image);
         }
         else
         {
@@ -102,9 +113,7 @@ public class AdminProduct extends HttpServlet {
 
        request.setAttribute("error", error);
 
-
-
-    this.getServletContext().getRequestDispatcher("/WEB-INF/View/AdminProduct.jsp").forward( request, response );
+    this.getServletContext().getRequestDispatcher("/WEB-INF/View/AdminProductAdd.jsp").forward( request, response );
     }
 
     private void validImg(String str) throws Exception

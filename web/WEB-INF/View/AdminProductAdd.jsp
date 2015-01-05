@@ -17,7 +17,7 @@
 
 
 
-<form method="post" action="adminProduct">
+<form method="post" action="adminProductAdd ">
 
     <label for="img">Image - url<span class="requis">*</span></label>
     <input type="url" id="img" name="img" value="" required/>

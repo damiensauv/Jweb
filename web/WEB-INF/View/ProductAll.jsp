@@ -1,12 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: damien
-  Date: 16/12/14
-  Time: 16:21
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <html>
 <head>
     <title>Product All</title>
@@ -17,24 +11,18 @@
 
 <h1>Product All</h1>
 
-<p>FAIRE une boucle pour tout les produit</p>
-
-
-<!--
-    <c:out value="${productAll}">${productAll}</c:out>
--->
-
+<c:forEach items="${productAll}" var="product" varStatus="status">
     <fieldset>
-        <p>-----Name------</p>
-        <img src="http://www.francebleu.fr/sites/default/files/imagecache/462_ressource/2013/08/13/766274/images/4l-photo-web.jpg" height="100" width="100">
-        <p>prod 1</p>
-        <p>Description :  </p>
-        <p>Stock :  </p>
-        <p>Prix :  </p>
+        <p> ----- <a href="<c:url value="/product?id=${product.get_id()}"/>">${product.get_name()}</a> ------ </p>
 
+        <img src="<c:out value="${imageAll[status.index].get_url()}"/>" height="100" width="100">
 
-
+        <p>Description :  <c:out value="${product.get_description()}" /></p>
+        <p>Stock :  <c:out value="${product.get_stock()}" /></p>
+        <p>Note : <c:out value="${product.get_average()}" /></p>
+        <p>Prix :  <c:out value="${product.get_price()}" /></p>
     </fieldset>
+</c:forEach>
 
 </body>
 </html>

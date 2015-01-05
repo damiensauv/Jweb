@@ -9,8 +9,6 @@ public class    Image extends MyEntity
     private int         _id;
     private String      _url;
 
-
-
     public Image()
     {
         _id = -1;
@@ -22,9 +20,6 @@ public class    Image extends MyEntity
         _id = id;
         _url = url;
     }
-
-
-
 
     public  boolean     isValid()
     {

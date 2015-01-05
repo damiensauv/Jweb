@@ -16,5 +16,8 @@
 <c:import url="NavBar.jsp"/>
 
     Profile
+
+info du mec + histo des achats
+
 </body>
 </html>

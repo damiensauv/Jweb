@@ -13,11 +13,18 @@
 </head>
 <body>
 
-
-
-
 <c:import url="NavBar.jsp"></c:import>
 
-    <p>Home Screen Test!!!</p>
+    <p>Home Screen !!!</p>
+
+
+
+
+<p>Top 3 produit</p>
+<fieldset>
+    produit best 1
+</fieldset>
+
+
 </body>
 </html>

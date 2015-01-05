@@ -9,14 +9,24 @@ public class Comment extends MyEntity
     private int _productId;
     private String _comment;
     private int _stars;
-
+    private int _id;
 
     public Comment()
     {
+        _id = 0;
         _userId = -1;
         _productId = -1;
         _comment = "";
         _stars = 0;
+    }
+
+    public Comment(int id, int userId, int productId, String comment, int stars)
+    {
+        _id = id;
+        _userId = userId;
+        _productId = productId;
+        _comment = comment;
+        _stars = stars;
     }
 
     public Comment(int userId, int productId, String comment, int stars)
@@ -24,7 +34,7 @@ public class Comment extends MyEntity
         _userId = userId;
         _productId = productId;
         _comment = comment;
-        _stars = 0;
+        _stars = stars;
     }
 
     public boolean isValid() {

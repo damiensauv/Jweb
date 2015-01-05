@@ -12,20 +12,22 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by damien on 16/12/14.
- */
 public class ProductAll extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         TomcatDB db = new TomcatDB("jdbc:mysql://localhost:3306/JWeb", "damien", "azerty");
 
         db.connectToDataBase();
-        List<Entities.Product> list = new ArrayList<Product>();
+        List<Entities.Product> listProduct;
+        List<Image> listImage;
 
-        list = db.get_products();
+        listProduct = db.get_products();
+        listImage = db.get_images();
 
-        request.setAttribute("productAll", list);
+        request.setAttribute("productAll", listProduct);
+        request.setAttribute("imageAll", listImage);
+
+
 
         this.getServletContext().getRequestDispatcher( "/WEB-INF/View/ProductAll.jsp" ).forward(request, response);
     }

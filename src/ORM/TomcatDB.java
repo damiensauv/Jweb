@@ -59,11 +59,9 @@ public  class  TomcatDB implements IDataBase
         }
         catch (SQLException e)
         {
-
             System.out.print(e.getMessage());
             throw (e);
         }
-
         return (res);
     }
 
@@ -136,8 +134,16 @@ public  class  TomcatDB implements IDataBase
     {
         String          query = "INSERT INTO Comment (user_id, product_id, comment, stars) VALUES(";
 
-        query += obj.get_userId() + ", " + obj.get_productId() + ", " + obj.get_comment() + ", " +obj.get_stars();
+        query += obj.get_userId() + ", " + obj.get_productId() + ", '" + obj.get_comment() + "', " + obj.get_stars();
         query += ") ;";
+        return (execute_INSERT_query(query));
+    }
+
+    public boolean      add_image(Image obj)
+    {
+        String          query = "INSERT INTO Image (id_product, url) VALUES(";
+
+        query += obj.get_id() + ", '" + obj.get_url() + "') ;";
         return (execute_INSERT_query(query));
     }
 
@@ -146,18 +152,14 @@ public  class  TomcatDB implements IDataBase
      */
     public boolean      update_user(User obj)
     {
-        if (!delete_user(obj) || !add_user(obj))
-            return false;
-        return (true);
+        String query = "UPDATE User SET email='" + obj.get_email() + "', pseudo="+obj.get_pseudo()+",role="+obj.get_role()+";";
+        return (execute_INSERT_query(query));
     }
-    public boolean      update_product(Product obj)
+    public boolean update_product(Product obj)
     {
-        if (!delete_product(obj) || !add_product(obj))
-            return false;
-        return (true);
+        String query = "UPDATE Product SET price="+obj.get_price() + ",description='"+obj.get_description()+"',name='"+obj.get_name()+"', stock="+obj.get_stock()+",average="+obj.get_average()+";";
+        return (execute_INSERT_query(query));
     }
-
-
 
     /*
     Delete
@@ -165,14 +167,14 @@ public  class  TomcatDB implements IDataBase
     public boolean      delete_user(User obj)
     {
         String   query  = "DELETE FROM User WHERE id = " + obj.get_id() + " ;";
-        if (!execute_DELETE_query(query) || !delete_comment(obj) ||!delete_cart(new Cart(0, obj.get_id(), null, 0, null)))
+        if (!delete_comment(obj) ||!delete_cart(new Cart(0, obj.get_id(), null, 0, null)) || !execute_DELETE_query(query))
             return (false);
         return (true);
     }
     public boolean      delete_product(Product obj)
     {
         String   query  = "DELETE FROM Product WHERE id = " + obj.get_id() + " ;";
-        if (!execute_DELETE_query(query) || !delete_comment(obj))
+        if (!delete_comment(obj) || !execute_DELETE_query(query))
             return (false);
         return (true);
     }
@@ -186,12 +188,12 @@ public  class  TomcatDB implements IDataBase
     }
     public boolean      delete_comment(Product obj)
     {
-        String   query  = "DELETE FROM Product WHERE product_id = " + obj.get_id() + " ;";
+        String   query  = "DELETE FROM Comment WHERE product_id = " + obj.get_id() + " ;";
         return (execute_DELETE_query(query));
     }
     public boolean      delete_comment(User obj)
     {
-        String   query  = "DELETE FROM Product WHERE user_id = " + obj.get_id() + " ;";
+        String   query  = "DELETE FROM Comment WHERE user_id = " + obj.get_id() + " ;";
         return (execute_DELETE_query(query));
     }
     public boolean      delete_cart_product(CartProduct obj)
@@ -199,7 +201,7 @@ public  class  TomcatDB implements IDataBase
         String   query  = "DELETE FROM CartProduct WHERE ";
 
         query += "id = " + obj.get_cartId() + "product_id = " + obj.get_productId() + " ;";
-        return (execute_DELETE_query(query));
+        return (execute_DELETE_query (query));
     }
 
     /*
@@ -256,6 +258,37 @@ public  class  TomcatDB implements IDataBase
         }
         return (null);
     }
+
+    public User                     get_specific_user_mail(String email)
+    {
+        String      query = "SELECT * FROM User WHERE email = '" + email + "' ;";
+        ResultSet   res;
+
+
+        try
+        {
+            res = execute_SELECT_query(query);
+            while (res.next())
+            {
+                if (res.getString("email").equals(email))
+                {
+                    return (new User(res.getInt("id"),
+                            res.getString("email"),
+                            res.getString("pseudo"),
+                            UserRole.valueOf(res.getString("role")),
+                            res.getBoolean("newsletter"),
+                            res.getString("salt"),
+                            res.getString("password")));
+                }
+            }
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+        return (null);
+    }
+
     public User                     get_user(String email, String password)
     {
         String      query = "SELECT * FROM User WHERE email = '" + email + "' AND password = '" + password + "';";
@@ -360,7 +393,7 @@ public  class  TomcatDB implements IDataBase
             res = execute_SELECT_query(query);
             while (res.next())
             {
-                list.add(new Product(res.getInt("id"), res.getFloat("price"), res.getString("description"), res.getString("name"), res.getInt("stock")));
+                list.add(new Product(res.getInt("id"), res.getFloat("price"), res.getString("description"), res.getString("name"), res.getInt("stock"), res.getInt("average")));
             }
             return (list);
         }
@@ -370,6 +403,29 @@ public  class  TomcatDB implements IDataBase
         }
         return (null);
     }
+
+    public List<Image>            get_images()
+    {
+        List<Image>                  list = new ArrayList<Image>();
+        String              query = "SELECT * FROM Image;";
+        ResultSet   res;
+
+        try
+        {
+            res = execute_SELECT_query(query);
+            while (res.next())
+            {
+                list.add(new Image(res.getInt("id_product"), res.getString("url")));
+            }
+            return (list);
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+        return (null);
+    }
+
     public Product                  get_product(int id)
     {
         String      query = "SELECT * FROM Product WHERE id = " + id + " ;";
@@ -378,11 +434,8 @@ public  class  TomcatDB implements IDataBase
         try
         {
             res = execute_SELECT_query(query);
-            return (new Product(res.getInt("id"),
-                    res.getFloat("price"),
-                    res.getString("description"),
-                    res.getString("name"),
-                    res.getInt("stock")));
+            res.next();
+            return (new Product(res.getInt("id"), res.getFloat("price"), res.getString("description"), res.getString("name"), res.getInt("stock"), res.getInt("average")));
         }
         catch (SQLException e)
         {
@@ -390,6 +443,25 @@ public  class  TomcatDB implements IDataBase
         }
         return (null);
     }
+
+    public Product                  get_product_by_name(String name)
+    {
+        String      query = "SELECT * FROM Product WHERE name = '" + name + "' ;";
+        ResultSet   res;
+
+        try
+        {
+            res = execute_SELECT_query(query);
+            res.next();
+            return (new Product(res.getInt("id"), res.getFloat("price"), res.getString("description"), res.getString("name"), res.getInt("stock"), res.getInt("average")));
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+        return (null);
+    }
+
     public Image                    get_image(int productid)
     {
         String      query = "SELECT * FROM Image WHERE id_product = " + productid + " ;";
@@ -398,7 +470,8 @@ public  class  TomcatDB implements IDataBase
         try
         {
             res = execute_SELECT_query(query);
-            return (new Image(res.getInt("id"), res.getString("url")));
+            res.next();
+            return new Image(res.getInt("id_product"), res.getString("url"));
         }
         catch (SQLException e)
         {
@@ -407,4 +480,26 @@ public  class  TomcatDB implements IDataBase
         return (null);
     }
 
+    public List<Comment>            get_comments(int productid)
+    {
+        List<Comment>                  list = new ArrayList<Comment>();
+        String              query = "SELECT * FROM Comment WHERE product_id = " + productid + " ;";
+
+        ResultSet   res;
+
+        try
+        {
+            res = execute_SELECT_query(query);
+            while (res.next())
+            {
+                list.add(new Comment(res.getInt("id"), res.getInt("user_id"), res.getInt("product_id"), res.getString("comment"), res.getInt("stars") ));
+            }
+            return (list);
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+        return (null);
+    }
 }

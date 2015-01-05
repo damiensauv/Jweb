@@ -18,27 +18,28 @@
 
         <p>Page de connexion</p>
 
+<span class="error"> ${simple_error}</span>
+
         <form method="post" action="login">
             <fieldset>
-                <legend>Login</legend>
+
                 <p>Vous pouvez vous loger ici</p>
 
                 <label for="email">Adresse email <span class="requis">*</span></label>
                 <input type="email" id="email" name="email" value="" size="20" maxlength="60" required/>
+                <span class="erreur">${ error['email']}</span>
 
                 <br />
 
                 <label for="password">Mot de passe <span class="requis">*</span></label>
                 <input type="password" id="password" name="password" value="" size="20" maxlength="20" required/>
+                <span class="erreur">${ error['password']}</span>
 
                 <br />
                 <input type="submit" value="login"  />
                 <br />
             </fieldset>
         </form>
-
-
-
 
 </body>
 </html>
